@@ -4,7 +4,7 @@ const cors = require('cors')
 const User = require('./models/user.model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
-
+const path = require('path')
 app.use(cors())
 app.use(express.json())
 
@@ -70,22 +70,31 @@ app.get('/api/quote', async (req, res) => {
 
 app.post('/api/quote', async (req, res) => {
 	const token = req.headers['x-access-token'];
-  
+
 	try {
-	  const decoded = jwt.verify(token, 'secret123');
-	  const email = decoded.email;
-	  const user = await User.findOne({ where: { email } });
-	  if (!user) {
-		return res.json({ status: 'error', error: 'User not found' });
-	  }
-	  user.quote = req.body.quote;
-	  await user.save();
-	  return res.json({ status: 'ok' });
+		const decoded = jwt.verify(token, 'secret123');
+		const email = decoded.email;
+		const user = await User.findOne({ where: { email } });
+		if (!user) {
+			return res.json({ status: 'error', error: 'User not found' });
+		}
+		user.quote = req.body.quote;
+		await user.save();
+		return res.json({ status: 'ok' });
 	} catch (error) {
-	  console.log(error);
-	  res.json({ status: 'error', error: 'invalid token' });
+		console.log(error);
+		res.json({ status: 'error', error: 'invalid token' });
 	}
-  });
-app.listen(2000, () => {
-	console.log('Server started on 2000')
+});
+
+app.get('*', (req, res) => {
+	res.sendFile(path.join(__dirname, 'static/index.html'))
+})
+
+app.get('/',(req,res)=>{
+	res.send('<center><h1>this is mern App</h1></center/>')
+})
+
+app.listen(7000, () => {
+	console.log('Server started on 7000')
 })

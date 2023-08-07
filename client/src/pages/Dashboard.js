@@ -9,7 +9,7 @@ const Dashboard = () => {
   const Navigate = useNavigate()
 
   const populateQuote =async()=> {
-    const req = await fetch('http://localhost:2000/api/quote', {
+    const req = await fetch('/api/quote', {
         headers: {
             'x-access-token': localStorage.getItem('token'),
         },
@@ -39,7 +39,7 @@ useEffect(() => {
 const updateQuote=async(event) =>{
   event.preventDefault()
 
-  const req = await fetch('http://localhost:2000/api/quote', {
+  const req = await fetch('/api/quote', {
       method: 'POST',
       headers: {
           'Content-Type': 'application/json',

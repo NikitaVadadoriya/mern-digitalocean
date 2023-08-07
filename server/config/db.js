@@ -2,11 +2,11 @@ require("dotenv").config();
 const { Sequelize } = require("sequelize");
 
 const db = new Sequelize(
-  { database: 'full-mern-stack-video',
+  { database: 'mern',
     username:'root',
     password: 'password',
     port: 3306,
-    host: 'localhost',
+    host: '127.0.0.1',
     dialect: "mysql",
     logging:false,
     pool: {

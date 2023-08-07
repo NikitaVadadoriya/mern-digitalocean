@@ -9,7 +9,7 @@ const Login = () => {
   const loginUser = async (event) => {
     event.preventDefault()
     if(!email =="" && !password == ""){
-    const response = await fetch('http://localhost:2000/api/login', {
+    const response = await fetch('/api/login', {
         method: 'POST',
         headers: {
             'Content-Type': 'application/json',
