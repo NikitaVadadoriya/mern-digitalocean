@@ -27,7 +27,7 @@ app.post('/api/register', async (req, res) => {
 
 app.post('/api/login', async (req, res) => {
 	const user = await User.findOne({
-		email: req.body.email,
+		where:{email: req.body.email},
 	})
 
 	if (!user) {
@@ -42,7 +42,7 @@ app.post('/api/login', async (req, res) => {
 	if (isPasswordValid) {
 		const token = jwt.sign(
 			{
-				name: user.name,
+				userName: user.userName,
 				email: user.email,
 			},
 			'secret123'
@@ -60,7 +60,7 @@ app.get('/api/quote', async (req, res) => {
 	try {
 		const decoded = jwt.verify(token, 'secret123')
 		const email = decoded.email
-		const user = await User.findOne({ email: email })
+		const user = await User.findOne({where:{ email: email }})
 
 		return res.json({ status: 'ok', quote: user.quote })
 	} catch (error) {
