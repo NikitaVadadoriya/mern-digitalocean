@@ -5,6 +5,7 @@ const User = require('./models/user.model')
 const jwt = require('jsonwebtoken')
 const bcrypt = require('bcryptjs')
 const path = require('path')
+
 app.use(cors())
 app.use(express.json())
 app.use(express.static('static'))
@@ -48,7 +49,7 @@ app.post('/api/login', async (req, res) => {
 			'secret123'
 		)
 
-		return res.json({ status: 'ok', user: token })
+		return res.json({ status: 'login successfully', user: token })
 	} else {
 		return res.json({ status: 'error', user: false })
 	}
@@ -81,7 +82,7 @@ app.post('/api/quote', async (req, res) => {
 		}
 		user.quote = req.body.quote;
 		await user.save();
-		return res.json({ status: 'ok' });
+		return res.json({ status: 'add quote...' });
 	} catch (error) {
 		console.log(error);
 		res.json({ status: 'error', error: 'invalid token' });
@@ -90,10 +91,6 @@ app.post('/api/quote', async (req, res) => {
 
 app.get('*', (req, res) => {
 	res.sendFile(path.join(__dirname, 'static/index.html'))
-})
-
-app.get('/',(req,res)=>{
-	res.send('<center><h1>this is mern App</h1></center/>')
 })
 
 app.listen(7000, () => {
