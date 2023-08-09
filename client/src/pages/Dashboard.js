@@ -16,7 +16,7 @@ const Dashboard = () => {
     })
 
     const data = await req.json()
-    if (data.status === 'ok') {
+    if (data.status === 'add quote...') {
         setQuote(data.quote)
     } else {
         alert(data.error)
