@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../App.css'
 
 const Login = () => {
   const Navigate = useNavigate()
@@ -34,8 +35,9 @@ const Login = () => {
 }
   return (
     <div>
+      <form onSubmit={loginUser} className='main'>
       <h1>Login</h1>
-      <form onSubmit={loginUser}>
+
         <label for="email">Email Id ::</label>
         &nbsp;<input
           name='email'

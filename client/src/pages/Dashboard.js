@@ -59,8 +59,8 @@ const updateQuote=async(event) =>{
   }
 }
   return (
-    <div>
-      <h1>Your quote: {quote || 'No quote found'}</h1>
+    <div className='dash'>
+      <h1 style={{color:'white'}}>Your quote: {quote || 'No quote found'}</h1>
       <form onSubmit={updateQuote}>
         <input
           type="text"
@@ -68,8 +68,9 @@ const updateQuote=async(event) =>{
           value={tempQuote}
           onChange={(e) => setTempQuote(e.target.value)}
           name='quote'
+          className='input'
         />
-        <input type="submit" value="Update quote" />
+        <input type="submit" value="Update quote"  className='btn1'/>
       </form>
     </div>
   )

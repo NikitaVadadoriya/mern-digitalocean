@@ -1,14 +1,45 @@
-
+body
+{
+background-image: url('./pages/joker.png');
+background-repeat: no-repeat;
+background-size: cover;
+}
 
 .input{
 height: 30px;
 border: 2px solid;
 width: 250px;
+border-radius: 5px;
 }
 
 .btn{
     width: 150px;
     height: 30px;
     background-color: green;
+    border-radius: 5px;
+}
+.btn:hover{
+    background-color: white;
+}
+.main{
+    border:2px solid;
+    width: 500px;
+    height: 400px;
+    text-align: center;
+    font-size: larger;
+    font-family: Georgia, 'Times New Roman', Times, serif;
+    background-color: white;
+    margin-top: 100px;
+    margin-right: 100px;
+}
+.dash{
+        margin-top: 200px;
+        font-family: Georgia, 'Times New Roman', Times, serif;
+}
+.btn1{
+    width: 150px;
+    height: 35px;
+    color: white;
+    background-color: indianred;
     border-radius: 5px;
 }

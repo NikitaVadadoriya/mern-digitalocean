@@ -1,5 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import '../App.css'
 
 const Register = () => {
     const Navigate = useNavigate()
@@ -23,21 +24,22 @@ const Register = () => {
                     email,
                     password,
                 }),
-        })
-            .then((res) => {
-                Navigate('/login')
             })
+                .then((res) => {
+                    Navigate('/login')
+                })
+        }
+        else {
+            alert('something are wrong')
+        }
     }
-    else{
-        alert('something are wrong')
-    }
-}
 
     return (
         <>
-            <div>
-                <h1>Register</h1>
-                <form onSubmit={adduser}>
+            <div >
+
+                <form onSubmit={adduser} className='main'>
+                    <h1>Register</h1>
                     <label for="username">UserName ::</label>
                     &nbsp; <input
                         name='userName'
